@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- Logging Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d [%t] %-5level: %msg%n%throwable</Property>
+        <Property name="APP_LOG_ROOT">./src/main/resources/log</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- File Appenders on need basis -->
+        <RollingFile name="batteryInfo" fileName="${APP_LOG_ROOT}/batteryInfo.log"
+                     filePattern="${APP_LOG_ROOT}/batteryInfo-%d{yyyy-MM-dd}-%i.log">
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.nwachukwufavour.dronetransport" additivity="false" level="debug">
+            <AppenderRef ref="batteryInfo" />
+<!--            <AppenderRef ref="infoLog"  />-->
+<!--            <AppenderRef ref="errorLog" />-->
+            <AppenderRef ref="Console"  />
+        </Logger>
+
+        <Root level="warn">
+            <AppenderRef ref="Console"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>

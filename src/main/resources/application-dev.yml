@@ -1,0 +1,7 @@
+server:
+  port: 8080
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///dev?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    name: favour
+    password:
