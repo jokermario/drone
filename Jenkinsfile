@@ -2,8 +2,12 @@
 
 pipeline {
     agent any
+    parameters {
+        choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
+    }
     stages {
         stage('Git Checkout'){
+            when { expression { params.action == 'create' } }
             steps {
                 gitCheckout(
                     branch: "main",
@@ -14,9 +18,30 @@ pipeline {
         }
 
         stage('Running tests with Maven'){
+            when { expression { params.action == 'create' } }
             steps {
                 script {
                     mvnTest()
+                }
+            }
+        }
+
+        stage('Static code analysis: Sonarqube'){
+            when { expression { params.action == 'create' } }
+            steps {
+                script {
+                    def sonarqubeCredentialId = 'sonar-api'
+                    staticCodeAnalysis(sonarqubeCredentialId)
+                }
+            }
+        }
+
+        stage('Quality gate status: Sonarqube'){
+            when { expression { params.action == 'create' } }
+            steps {
+                script {
+                    def sonarqubeCredentialId = 'sonar-api'
+                    qualityGateStatus(sonarqubeCredentialId)
                 }
             }
         }

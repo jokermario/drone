@@ -20987,3 +20987,18 @@ done initialization...
 {"BatteryLevel":85,"DroneState":"RETURNING","DroneSerialNo":"qwertiop2","timestamp":"Sat Aug 19 20:36:24 WAT 2023"}
 {"BatteryLevel":89,"DroneState":"DELIVERED","DroneSerialNo":"qwertiop3","timestamp":"Sat Aug 19 20:36:24 WAT 2023"}
 {"BatteryLevel":84,"DroneState":"DELIVERING","DroneSerialNo":"qwertiop5","timestamp":"Sat Aug 19 20:36:24 WAT 2023"}
+Starting DroneTransportApplicationTests using Java 11.0.13 on Nwachukwus-MacBook-Pro.local with PID 18686 (started by nwachukwufavour in /Users/nwachukwufavour/PerWorkspace/drone-transport)
+The following 1 profile is active: "test"
+Started DroneTransportApplicationTests in 7.279 seconds (JVM running for 9.885)
+start data initialization...
+data:reactor.core.publisher.FluxConcatArray$ConcatArraySubscriber@13087c75
+data:Medication(id=1, name=med1, weight=150, code=AS291__, image=linktoimage, droneSerialNo=null, createdAt=2023-08-19T20:55:32.844666, createdBy=null, updatedAt=2023-08-19T20:55:32.844666, updatedBy=null)
+data:Medication(id=2, name=med2, weight=100, code=AS261__, image=linktoimage, droneSerialNo=null, createdAt=2023-08-19T20:55:32.897368, createdBy=null, updatedAt=2023-08-19T20:55:32.897368, updatedBy=null)
+data:Medication(id=3, name=med3, weight=340, code=AS231__, image=linktoimage, droneSerialNo=null, createdAt=2023-08-19T20:55:32.911019, createdBy=null, updatedAt=2023-08-19T20:55:32.911019, updatedBy=null)
+done initialization...
+{"BatteryLevel":92,"DroneState":"LOADING","DroneSerialNo":"qwertyuiop","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
+{"BatteryLevel":95,"DroneState":"IDLE","DroneSerialNo":"qwertiop","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
+{"BatteryLevel":90,"DroneState":"LOADED","DroneSerialNo":"qwertiop1","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
+{"BatteryLevel":85,"DroneState":"RETURNING","DroneSerialNo":"qwertiop2","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
+{"BatteryLevel":89,"DroneState":"DELIVERED","DroneSerialNo":"qwertiop3","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
+{"BatteryLevel":84,"DroneState":"DELIVERING","DroneSerialNo":"qwertiop5","timestamp":"Sat Aug 19 20:55:33 WAT 2023"}
