@@ -12,5 +12,13 @@ pipeline {
                 )
             }
         }
+
+        stage('Running tests with Maven'){
+            steps {
+                script {
+                    mvnTest()
+                }
+            }
+        }
     }
 }
