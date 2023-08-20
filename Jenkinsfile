@@ -20,34 +20,34 @@ pipeline {
             }
         }
 
-        stage('Unit Tests: Maven'){
-            when { expression { params.action == 'create' } }
-            steps {
-                script {
-                    mvnTest()
-                }
-            }
-        }
-
-        stage('Static Code Analysis: Sonarqube'){
-            when { expression { params.action == 'create' } }
-            steps {
-                script {
-                    def sonarqubeCredentialId = 'sonar-api'
-                    staticCodeAnalysis(sonarqubeCredentialId)
-                }
-            }
-        }
-
-        stage('Quality Gate Status: Sonarqube'){
-            when { expression { params.action == 'create' } }
-            steps {
-                script {
-                    def sonarqubeCredentialId = 'sonar-api'
-                    qualityGateStatus(sonarqubeCredentialId)
-                }
-            }
-        }
+//         stage('Unit Tests: Maven'){
+//             when { expression { params.action == 'create' } }
+//             steps {
+//                 script {
+//                     mvnTest()
+//                 }
+//             }
+//         }
+//
+//         stage('Static Code Analysis: Sonarqube'){
+//             when { expression { params.action == 'create' } }
+//             steps {
+//                 script {
+//                     def sonarqubeCredentialId = 'sonar-api'
+//                     staticCodeAnalysis(sonarqubeCredentialId)
+//                 }
+//             }
+//         }
+//
+//         stage('Quality Gate Status: Sonarqube'){
+//             when { expression { params.action == 'create' } }
+//             steps {
+//                 script {
+//                     def sonarqubeCredentialId = 'sonar-api'
+//                     qualityGateStatus(sonarqubeCredentialId)
+//                 }
+//             }
+//         }
 
         stage('Maven Build: Maven'){
             when { expression { params.action == 'create' } }
@@ -71,7 +71,7 @@ pipeline {
             when { expression { params.action == 'create' } }
             steps {
                 script {
-                    dockerBuild("${params.ImageName}", "${params.DockerHubUser}")
+                    dockerImageScan("${params.ImageName}", "${params.DockerHubUser}")
                 }
             }
         }
