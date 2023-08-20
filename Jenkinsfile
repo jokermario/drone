@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Running tests with Maven'){
+        stage('Unit Tests: Maven'){
             when { expression { params.action == 'create' } }
             steps {
                 script {
@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        stage('Static code analysis: Sonarqube'){
+        stage('Static Code Analysis: Sonarqube'){
             when { expression { params.action == 'create' } }
             steps {
                 script {
@@ -36,12 +36,21 @@ pipeline {
             }
         }
 
-        stage('Quality gate status: Sonarqube'){
+        stage('Quality Gate Status: Sonarqube'){
             when { expression { params.action == 'create' } }
             steps {
                 script {
                     def sonarqubeCredentialId = 'sonar-api'
                     qualityGateStatus(sonarqubeCredentialId)
+                }
+            }
+        }
+
+        stage('Maven Build: Maven'){
+            when { expression { params.action == 'create' } }
+            steps {
+                script {
+                    mvnBuild()
                 }
             }
         }
